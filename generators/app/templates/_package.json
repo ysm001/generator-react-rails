@@ -1,0 +1,17 @@
+{
+  "name": "<%= project_name %>",
+  "description": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
+  "scripts": {
+    "bundle": "browserify -t reactify app/assets/javascripts/app.jsx > app/assets/javascripts/bundle.js",
+    "watch-js": "watchify -t reactify app/assets/javascripts/app.jsx -o app/assets/javascripts/bundle.js -v",
+    "start": "npm run watch-js & rails s"
+  }
+}

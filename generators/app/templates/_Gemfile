@@ -1,0 +1,71 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem "rails"
+
+gem 'mysql2'
+
+# gem 'slim-rails'               # HTMLを簡潔に書ける
+# # gem 'sass-rails'               # CSSを効率的に書ける
+# gem 'therubyracer'
+# gem 'less-rails'               # CSSを効率的に書ける
+# # gem 'bootstrap-sass'           # Twitter Bootstrapが使える
+# # gem 'compass-rails'            # Sassの機能拡張
+# # gem 'uglifier'                 # JavaScriptの圧縮
+# gem 'coffee-rails'             # JavaScriptを簡潔に書ける
+# gem 'jquery-rails'             # jQueryが使える
+# 
+# # Authentication
+# # gem 'omniauth'                 # 外部アカウントでログインできる
+# # gem 'omniauth-twitter'         # Omniauthを使ってTwitterログインできる
+# # gem 'omniauth-facebook'        # Omniauthを使ってFacebookログインできる
+# 
+# # Uploader
+# # gem 'carrierwave'              # 画像アップローダ
+# # gem 'mini_magick'              # CarrierWaveでリサイズなどができるようになる
+# # gem 'fog'                      # CarrierWaveでAmazon S3に保存できるようになる
+# 
+# gem 'jbuilder'                 # JSONレスポンスを効率的に書ける
+# # gem 'draper'                   # Presenterレイヤーを追加して、ビューを効率的に書ける
+# # gem 'acts-as-taggable-on'      # タグ機能を実装できる
+# # gem 'kaminari'                 # ページャ
+# # gem 'rails_autolink'           # URLの自動リンク化
+# # gem 'rails_config'             # 定数管理
+# # gem 'dotenv-rails'             # 環境変数管理
+# # gem 'sitemap_generator'        # サイトマップ生成
+# # gem 'whenever', :require => false   # cronを登録できる
+# # gem 'exception_notification'   # エラーが発生したらメールを送ってくれる
+# # gem 'newrelic_rpm'             # パフォーマンス監視サービスを利用できる
+# 
+# 
+# group :development do
+#   # gem 'thin'                   # 開発用サーバ 
+#   # gem 'rails-erd'              # モデルのER図をPDFで出力してくれる
+   gem 'spring'                 # RspecなどでRailsをプリロードする
+#   gem 'rails_best_practices'   # Railsのベストプラクティスを教えてくれる
+#   # gem 'annotate', git: 'git://github.com/ctran/annotate_models.git' # テーブル情報をモデルファイルに追記してくれる
+#   # gem 'capistrano'             # デプロイツール
+#   gem 'bullet'                 # 余計なSQLを検出できる
+#   # gem 'guard'                # ファイルの変更を監視して作業を自動化 ※bundlerを使わないほうがいいためコメントアウト
+#   # gem 'guard-rspec'            # ファイルが変更されたらRsepcを自動実行
+#   # gem 'guard-livereload'       # ファイルが変更されたらページを自動リロード
+#   # gem 'quiet_assets'           # アセットログの抑制
+# 
+#   # debug
+#   gem 'better_errors'          # エラー画面を見やすくする
+#   gem 'binding_of_caller'      # better_errorsのエラー画面でREPLが使える
+#   gem 'tapp'                   # プリントデバッグがしやすくなる
+#   gem 'pry-rails'              # railsでpryが使える
+#   gem 'pry-byebug'             # pryでデバックコマンドが使える
+#   gem 'awesome_print'          # プリントデバッグの出力を整形
+#   gem 'hirb'                   # SQLの結果を見やすく整形してくれる
+#   gem 'hirb-unicode'           # hirbの日本語対応
+# end
+# 
+# group :test do
+#   gem 'rspec'                  # テストツール
+#   gem 'rspec-rails'            # RailsでRspecが使える
+#   gem 'factory_girl_rails'     # テストデータの生成
+#   gem 'database_cleaner'       # テスト実行後にDBをクリア
+#   # gem 'capybara'               # ブラウザでの操作をシミュレートしてテストができる
+# end
