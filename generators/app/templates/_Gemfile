@@ -9,7 +9,10 @@ gem 'browserify-rails', '~> 0.5'
 # gem 'slim-rails'               # HTMLを簡潔に書ける
 # # gem 'sass-rails'               # CSSを効率的に書ける
 gem 'therubyracer'
+
+<% if (use_material_design) { %>
 gem 'less-rails'               # CSSを効率的に書ける
+<% } %>
 # # gem 'bootstrap-sass'           # Twitter Bootstrapが使える
 # # gem 'compass-rails'            # Sassの機能拡張
 # # gem 'uglifier'                 # JavaScriptの圧縮

@@ -20,6 +20,12 @@ module.exports = yeoman.generators.Base.extend({
       name: 'project_name',
       message: 'What is project name?',
       default: "react-rails-project"
+    },
+    {
+      type: 'confirm',
+      name: 'use_material_design',
+      message: 'Use Material Design?',
+      default: true
     }
     ];
 
@@ -50,9 +56,10 @@ module.exports = yeoman.generators.Base.extend({
         {project_name: this.props.project_name}
       );
 
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('_Gemfile'),
-        this.destinationPath('Gemfile')
+        this.destinationPath('Gemfile'),
+        {use_material_design: this.props.use_material_design}
       );
 
       this.fs.copy(
@@ -65,9 +72,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('app/assets/javascripts/app.jsx')
       );
 
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app-routes.jsx'),
-        this.destinationPath('app/assets/javascripts/app-routes.jsx')
+        this.destinationPath('app/assets/javascripts/app-routes.jsx'),
+        {use_material_design: this.props.use_material_design}
       );
     },
 
@@ -89,15 +97,22 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     this.spawnCommand('bundle', ['install', '--path', 'vendor/bundle']).on('close', function() {
       self.spawnCommand('bundle', ['exec', 'rails new . -d mysql']).on('close', function() {
-        self.spawnCommand('bundle', ['exec', 'rails g controller react index']).on('close', function() {
-          self.spawnCommand('cp', ['config/database.yml', 'config/database.yml.example']);
-          self.spawnCommand('sed', ['-i -e', 's/require_tree ./require bundle.js/', 'app/assets/javascripts/application.js']);
-
-          self.spawnCommand('npm', ['install', '--save-dev', 'browserify', 'reactify', 'watchify']).on('close', function() {
+        self.spawnCommand('cp', ['config/database.yml', 'config/database.yml.example']);
+        self.spawnCommand('sed', ['-i -e', 's/require_tree ./require bundle.js/', 'app/assets/javascripts/application.js']);
+        self.spawnCommand('npm', ['install', '--save-dev', 'browserify', 'reactify', 'watchify']).on('close', function() {
+          self.spawnCommand('touch', ['app/assets/javascripts/bundle.js']).on('close', function() {
             self.spawnCommand('npm', ['install', '--save', 'react', 'react-router', 'react-tap-event-plugin']).on('close', function() {
-              self.log(chalk.yellow('Please edit config/database.yml.'));
-              self.spawnCommand('vi', ['config/database.yml'])
-              self.log(chalk.yellow("Please type 'npm start' to start server."));
+              self.spawnCommand('npm', ['install', '--save', 'material-ui'], function() {
+                self.spawnCommand('npm', ['run', 'bundle']).on('close', function() {
+                  self.spawnCommand('bundle', ['exec', 'spring stop']).on('close', function() {
+                    self.spawnCommand('bundle', ['exec', 'rails g controller react index']).on('close', function() {
+                      self.log(chalk.yellow('Please edit config/database.yml.'));
+                      self.spawnCommand('vim', ['config/database.yml'])
+                      self.log(chalk.yellow("Please type 'npm start' to start server."));
+                    })
+                  });
+                });
+              });
             });
           });
         });

@@ -4,8 +4,23 @@ var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 
+<% if (use_material_design) { %>
+var mui = require('material-ui');
+var RaisedButton = mui.RaisedButton;
+var DatePicker = mui.DatePicker;
+var AppBar = mui.AppBar;
+<% } %>
+
 var Root = React.createClass({
   render: function() {
+    <% if (use_material_design) { %>
+    return (
+        <div>
+          <AppBar/>
+          <RouteHandler/>
+        </div>
+    );
+    <% } else { %>
     return (
         <div>
           <p>header</p>
@@ -13,6 +28,7 @@ var Root = React.createClass({
           <p>footer</p>
         </div>
     );
+    <% } %>
   }
 });
 

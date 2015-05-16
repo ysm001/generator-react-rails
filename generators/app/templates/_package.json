@@ -12,6 +12,6 @@
   "scripts": {
     "bundle": "browserify -t reactify app/assets/javascripts/app.jsx > app/assets/javascripts/bundle.js",
     "watch-js": "watchify -t reactify app/assets/javascripts/app.jsx -o app/assets/javascripts/bundle.js -v",
-    "start": "npm run watch-js & rails s"
+    "start": "npm run watch-js & bundle exec rails s"
   }
 }
